@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<HEAD>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+ <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet"> 
+ <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet"> 
+</HEAD>
+
+<style>
+
+html, body {
+    height: 100%;
+    width: 100%;
+    padding: 0; margin: 0;
+    cursor: url('hand6.png'), 
+    auto;
+}
+
+.play{
+font-size:10vh;
+text-align: center; 
+font-family: 'Permanent Marker', cursive;
+color: white;
+
+}
+
+.play:hover {
+text-shadow: 2px 2px 8px red;
+}
+
+
+.theEnd{
+font-size:4vh;
+text-align: center;
+font-family: 'Permanent Marker', cursive;
+color: white ;
+text-shadow: 2px 2px 8px red;
+visibility: hidden;
+position: relative;
+z-index: 99;
+}
+
+
+.petal {
+  width: 20px;
+  height: 10px;
+  position: absolute;
+  background-image: url('petal4.png');
+
+}
+
+
+.love {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  background-image: url('corazon3.png');
+  background-size: cover;
+}
+
+
+.hints{
+  border-bottom: 1px dotted black;
+  border-radius: 6px;
+  background-color: pink;
+  width: 20vw;
+  word-wrap: break-word;
+  margin : auto;
+  color: white;
+  padding: 5px 0;
+  text-align: center;
+  font-family: 'Permanent Marker';
+  visibility: hidden;
+  position: relative;
+  z-index: 99;
+}
+
+</style>
+<body  style="background-image: url('sakura.jpg');">
+
+<h1 id="title"  style="font-size:10vh;margin-top: 7vh;text-align: center;font-family: 'Permanent Marker', cursive ; color:red;">sakura love</h1>
+
+<h4 id="theEnd" class="theEnd">it gone as big as the word unconditional, this love will last forever.</h4>
+<h4 id="thanks" class="theEnd">thanks for playing!</h4>
+
+<div id="play">
+  <div class="row">
+    <div class="col-sm-4">
+    </div>
+    <div class="col-sm-4">
+  <h1 onmouseover="hints(1)" onmouseout="hints(0)" onclick="play()" class="play">Play</h1>
+</div>
+</div>
+</div>
+
+<div class="hints" id="hints">
+<p>
+ -Touch the love to make it bigger. 
+</p>
+<p>
+-Dodge the petals, they make the love smaller.
+</p>
+</div>
+
+
+<script>
+
+var i = 0;
+var w = screen.width - (screen.width*0.05);
+var h = screen.height - (screen.height*0.2);
+var petals= 200;
+var loveSize = 35;
+var people=[];
+var motion=[];
+var game ;
+
+  for(i=0;i<petals;i++){
+
+    people[i]=document.createElement("div");
+    people[i].classList.add("petal");
+    people[i].addEventListener("mouseover",fade, false);
+    document.body.appendChild(people[i]);
+    motion.push(new Person);
+  }
+
+  people[(people.length-1)].classList.remove("petal");
+  people[(people.length-1)].classList.add("love");
+  people[(people.length-1)].removeEventListener("mouseover",fade);
+  people[(people.length-1)].addEventListener("mouseover",touch, false);
+  people[(people.length-1)].style.visibility = "hidden"; 
+
+function hints (action){
+  if(action==1){  
+  document.getElementById("hints").style.visibility = "visible";
+  }
+  if(action==0){  
+  document.getElementById("hints").style.visibility = "hidden";
+  }
+  }
+
+function touch(){       
+       
+   if(loveSize>(h*0.65)){
+      document.getElementById("title").style.visibility = "hidden"; 
+      document.getElementById("theEnd").style.visibility = "visible";   
+      document.getElementById("thanks").style.visibility = "visible";  
+      clearInterval(game);
+      people[(people.length-1)].style.top=(h*0.35)+'px';
+      people[(people.length-1)].style.left=(w*0.34)+'px';
+      for(i=0;i<=people.length;i++){
+      people[i].removeEventListener("mouseover",fade);
+      }
+   }
+   else{
+     loveSize+=5; 
+     people[(people.length-1)].style.width=loveSize+'px';
+     people[(people.length-1)].style.height=loveSize+'px';
+     motion[(people.length-1)].y=(Math.floor(Math.random() * (h - 1) ) + 1);
+     motion[(people.length-1)].x=(Math.floor(Math.random() * (w - 1) ) + 1);
+   }
+}
+
+
+function fade(){
+  loveSize-=10; 
+  people[(people.length-1)].style.width=loveSize+'px';
+   people[(people.length-1)].style.height=loveSize+'px';
+   if(loveSize<0){
+    clearInterval(game);
+    document.getElementById('title').innerHTML="It's gone...";
+    document.getElementById("play").style.visibility = "visible"; 
+   }
+}
+
+
+function Person() {
+this.x=Math.floor(Math.random() * (w - 1) ) + 1;
+this.y=Math.floor(Math.random() * (h - 1) ) + 1;
+this.origin=0;
+this.direction=Math.floor(Math.random() * (8 - 1) ) + 1;
+
+this.move = function (){
+
+ if (this.x>w || this.y>h || this.x<0 || this.y<0) {
+
+      this.origin=Math.floor(Math.random() * (4 - 1) ) + 1;
+      switch(this.origin){
+        case 1:
+        this.x=0;
+        this.y=Math.floor(Math.random() * (h - 1) ) + 1;
+        break;
+        case 2:
+       this.x=w;
+        this.y=Math.floor(Math.random() * (h - 1) ) + 1;
+        break;
+        case 3:
+        this.x=Math.floor(Math.random() * (w - 1) ) + 1;
+        this.y=0;
+        break;
+        case 4:
+        this.x=Math.floor(Math.random() * (w - 1) ) + 1;
+        this.y=h;
+        break;
+      }
+
+      this.direction=Math.floor(Math.random() * (8 - 1) ) + 1;
+      
+    } else {
+      
+      switch(this.direction){
+      case 1:
+      this.x++;
+      this.y++;
+      break;
+      case 2:
+       this.x--;
+      this.y--;
+      break;
+      case 3:
+       this.x--;
+      this.y++;
+      break;
+      case 4:
+       this.x++;
+      this.y--;  
+      break;
+      case 5:
+      this.x++;
+      break;
+      case 6:
+      this.x--;
+      break;
+      case 7:
+      this.y++;
+      break;
+      case 8:
+      this.y--;
+      break;
+      }    
+}
+
+}
+};
+
+function frame() {
+    
+  for(i=0;i<=people.length;i++){
+
+    motion[i].move();
+    people[i].style.top=motion[i].y+'px';
+    people[i].style.left=motion[i].x+'px';
+    if((Math.floor(Math.random() * (100 - 1))+1)==1 && !people[i].classList.contains('love')){
+    people[i].style.transform ="rotate("+(Math.floor(Math.random() * (360 - 1) ) + 1)+"deg)"; 
+    }
+    }
+  } 
+
+function play (){
+
+  document.getElementById("play").style.visibility = "hidden";
+  document.getElementById('title').innerHTML="Don't leave!";
+  people[(people.length-1)].style.visibility = "visible";
+  game = setInterval(frame, 10);
+  loveSize=35;
+  touch();
+}
+
+</script>
+
+</body>
+</html>
