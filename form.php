@@ -1,7 +1,7 @@
 <?php
 
 //if "email" variable is filled out, send email
- if(ini_set("SMTP", "aspmx.l.google.com")){
+ini_set("SMTP", "aspmx.l.google.com"))
     ini_set("sendmail_from", "alfombra.roja.santiago@gmail.com");
 
     $message = "The mail message was sent with the following mail setting:\r\nSMTP = aspmx.l.google.com\r\nsmtp_port = 25\r\nsendmail_from = YourMail@address.com";
@@ -14,7 +14,7 @@
   }
   
   //if "email" variable is not filled out, display the form
-  else  {
+
 ?>
 
  <form method="post">
@@ -31,5 +31,5 @@
   </form>
   
 <?php
-  }
+  
 ?>
