@@ -1,18 +1,16 @@
 <?php
+
 //if "email" variable is filled out, send email
-  if (isset($_REQUEST['email']))  {
-  
-  //Email information
-  $admin_email = "alfombra.roja.santiago@gmail.com";
-  $email = $_REQUEST['email'];
-  $subject = $_REQUEST['subject'];
-  $comment = $_REQUEST['comment'];
-  
-  //send email
-  mail($admin_email, "$subject", $comment, "From:" . $email);
-  
-  //Email response
-  echo "Thank you for contacting us!";
+ if(ini_set("SMTP", "aspmx.l.google.com")){
+    ini_set("sendmail_from", "alfombra.roja.santiago@gmail.com");
+
+    $message = "The mail message was sent with the following mail setting:\r\nSMTP = aspmx.l.google.com\r\nsmtp_port = 25\r\nsendmail_from = YourMail@address.com";
+
+    $headers = "From: alfombra.roja.santiago@gmail.com";
+
+
+    mail("Sending@provider.com", "Testing", $message, $headers);
+    echo "Check your email now....<BR/>";
   }
   
   //if "email" variable is not filled out, display the form
