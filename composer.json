@@ -1,1 +1,6 @@
 {}
+{
+"require": {
+"sendgrid/sendgrid": "~3.2"
+}
+}
