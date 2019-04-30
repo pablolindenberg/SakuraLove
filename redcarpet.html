@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Red Carpet Santiago</title>
+  <!-- Fonts de google -->
+<link href="https://fonts.googleapis.com/css?family=Alice" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Cinzel" rel="stylesheet"> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Estilos css-->
+  <link type="text/css" rel="stylesheet" href="css3.css">
+
+</head>
+
+<body>
+ <img class="bg" src="bg_prueba.jpg" alt="">
+
+<span style="font-size:30px;cursor:pointer" onclick="openNavLeft()">&#9776;</span>
+
+ <div class="hero-text">
+
+    <h1>RED CARPET</h1>
+    <h1>SANTIAGO</h1>
+    <h6>Arriendo de alfombra roja para eventos</h6>
+</br>
+</br>
+   
+  
+  </div>
+
+
+
+<!--¿Como arrendar?-->
+<div id="sidenavLeft" class="sidenavLeft">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNavLeft()">&times;</a>
+
+<h3 style="margin-top:10%;">¿Como arrendar?</h3>
+<button id="acordeon1" class="accordeon" style="margin-top: 5%;">1. Contacto</button>
+          <div id="p_paso1" class="panel">
+            <p>Contactanos para agendar tu evento haciendo click en solicitud de arriendo, si prefieres también puedes llamar o comunicarte por whatsapp.</p>
+             <button id="btn_solicitud" onclick="openNavRightSolicitud()" type="button" class="btn btn-outline-primary" color="white" style="width: 14vw;">Solicitud de arriendo</button>  
+              </br>
+              </br>
+           <button type="button" class="btn btn-outline-warning num" style="width: 14vw;"><i class="fa fa-whatsapp num"></i>+569 877 69 29 7</button>
+
+            </br>
+             <!--
+          <a href="tel:+56987769297"><p class="num"><i class="fa fa-whatsapp num"></i>+569 877 69 29 7</p></a>
+          -->
+            </br>
+         
+          </div>
+
+          <button id="acordeon2" class="accordeon">2. Confirmación</button>
+          <div id="p_paso2" class="panel">
+           <p>Confirma tu arriendo 1 semana antes del día del evento escribiendo al mismo correo del cual te contactamos.</p>
+          </div>
+
+
+          <button id="acordeon3" class="accordeon">3. Montaje y pago</button>
+          <div  id="p_paso3" class="panel">
+           <p >La alfombra se montará en el lugar y horario acordado, el pago se realiza al finalizar la instalación.</p>
+           <p >Si escoges venir a retirar la alfombra, se paga el arriendo y adicionalmente es necesario dejar una garantía en caso de extravío o daños a la alfombra.</p>
+          </div>
+
+<button id="acordeon4"  class="accordeon">4. Desmontaje/Devolución</button>
+          <div  id="p_paso4" class="panel">
+            <p>La alfombra será retirada a la hora acordada, previa confirmación de la persona a cargo del evento.</p>
+             <p>En caso de devolver la alfombra al punto de retiro, la garantía será devuelta siempre y cuando no presente daños irreparables.</p>
+          </div>
+
+         
+</div>
+
+<!--Form Contacto -->
+<div id="sidenavRightContacto" class="sidenavRight">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNavRightContacto()">&times;</a>
+  <h3 style="margin-top:10%;">Contacto</h3>
+<form  id="form_contacto" action="" method="GET" onsubmit="return validateFormContacto();" style="margin-top: 10%;">
+ 
+<div class="form-group">
+    <label for="nombre">Nombre</label>
+    <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+  </div>
+
+  <div class="form-group">
+    <label for="correo">Correo electrónico</label>
+    <input type="email" class="form-control" id="correo" placeholder="ejemplo@correo.com">
+  </div>
+  
+  <div class="form-group">
+    <label for="mensaje">Mensaje</label>
+    <textarea class="form-control" id="mensaje" rows="3"></textarea>
+  </div>
+
+   <div class="form-group">
+
+   <input type="submit" class="btn btn-outline-primary" value="Enviar"></input>
+  </div>
+
+</form>
+
+</br>
+<div class="fono">
+<a href="tel:+56987769297">
+<p style="
+font-family: 'Alice', serif;
+color:white;
+font-size: 1.5vw !important;">
+<i style="
+color:white;
+font-size: 1.5vw !important;"
+class="fa fa-whatsapp"></i>+569 877 69 29 7</p></a>
+</div>
+
+</div>
+<!--Form solicitud -->
+
+<div id="sidenavRightSolicitud" class="sidenavRight">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNavRightSolicitud()">&times;</a>
+  <h3 style="margin-top:10%;">Solicitud de arriendo</h3>
+<form id="form_solicitud" action="" method="GET" onsubmit="return validateFormSolicitud();" style="margin-top: 10%;">
+ 
+<div class="form-group">
+    <label for="nombre">Nombre y apellido</label>
+    <input name="Nombre" type="text" class="form-control" id="nombre" placeholder="Nombre apellido">
+  </div>
+
+  <div class="form-group">
+    <label for="correo">Correo electrónico</label>
+    <input name="Correo electrónico" type="email" class="form-control" id="correo" placeholder="ejemplo@correo.com">
+  </div>
+  
+  <div class="form-group">
+    <label for="metros">Metros (mínimo 5)</label>
+    <input name="Metros"type="number"  min="5" step="5" class="form-control" id="metros" placeholder="5">
+  </div>
+  
+  <div class="form-group">
+    <label for="peldaños">Peldaños de escalera</label>
+    <input type="number" value="0" min="0" class="form-control" id="peldaños">
+  </div>
+  
+  <div class="form-group">
+    <label for="superficie">Superficie de contacto con la alfombra</label>
+    <input name="Superficie" type="text" class="form-control" id="superficie" placeholder="Cerámica, cemento pulido, etc">
+  </div>
+
+  <div class="form-group">
+    <label for="direccion">Dirección del evento</label>
+    <input name="Dirección" type="text" class="form-control" id="direccion">
+  </div>
+
+<div class="form-group">
+    <label for="fecha">Fecha del evento</label>
+    <input name="Fecha del evento" type="date" class="form-control" id="fecha">
+  </div>
+
+  <div class="form-group">
+    <label for="inicio">Hora de inicio</label>
+    <input name="Hora de inicio" type="time" class="form-control" id="inicio">
+    <label for="fin">Hora de termino</label>
+    <input name="Hora de termino" type="time" class="form-control" id="fin">
+  </div>
+
+   
+
+  <div class="form-group">
+    <label for="comentarios">Comentarios</label>
+    <textarea class="form-control" id="comentarios" rows="3"></textarea>
+  </div>
+
+   <div class="form-group">
+
+   <input type="submit" class="btn btn-outline-primary" value="Enviar"></input>
+  </div>
+
+</form>
+
+
+</br>
+<div class="fono">
+<a href="tel:+56987769297">
+<p style="
+font-family: 'Alice', serif;
+color:white;
+font-size:  1.5vw !important;">
+<i style="
+color:white;
+font-size:  1.5vw !important;"
+class="fa fa-whatsapp"></i>+569 877 69 29 7</p></a>
+</div>
+
+</div>
+
+
+<!--Control de sliders -->
+<script>
+var x = window.matchMedia("(max-width: 400px)")
+
+function openNavLeft() {
+if (x.matches) { 
+       document.getElementById("sidenavLeft").style.width = "100%";
+    } else {
+      document.getElementById("sidenavLeft").style.width = "25%";
+    }
+}
+
+function closeNavLeft() {
+    document.getElementById("sidenavLeft").style.width = "0";
+}
+
+function openNavRightContacto() {
+    document.getElementById("sidenavRightContacto").style.width = "25%";
+    document.getElementById("sidenavRightSolicitud").style.width = "0%";
+}
+
+function closeNavRightContacto() {
+    document.getElementById("sidenavRightContacto").style.width = "0";
+}
+
+function openNavRightSolicitud() {
+    document.getElementById("sidenavRightSolicitud").style.width = "25%";
+    document.getElementById("sidenavRightContacto").style.width = "0%";
+}
+function closeNavRightSolicitud() {
+    document.getElementById("sidenavRightSolicitud").style.width = "0";
+}
+
+
+
+</script>
+
+
+<!--JavaScript Acordeon -->
+<!--
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+   
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+-->
+
+
+
+<script>
+$("#p_paso1").hide();
+$("#p_paso2").hide();
+$("#p_paso3").hide();
+$("#p_paso4").hide();
+
+
+
+$(document).ready(function(){
+    $("#acordeon1").click(function(){
+        $("#p_paso1").slideToggle();
+        $("#acordeon1").toggleClass("active");
+
+        $("#p_paso2").hide();
+        $("#p_paso3").hide();
+        $("#p_paso4").hide();
+        $("#acordeon2").removeClass("active");
+        $("#acordeon3").removeClass("active");
+        $("#acordeon4").removeClass("active");
+       
+
+    });
+    $("#acordeon2").click(function(){
+        $("#p_paso2").slideToggle();
+        $("#acordeon2").toggleClass("active");
+
+        $("#p_paso1").hide();
+        $("#p_paso3").hide();
+        $("#p_paso4").hide();
+        $("#acordeon1").removeClass("active");
+        $("#acordeon3").removeClass("active");
+        $("#acordeon4").removeClass("active");
+
+    });
+    $("#acordeon3").click(function(){
+        $("#p_paso3").slideToggle();
+        $("#acordeon3").toggleClass("active");
+
+        $("#p_paso1").hide();
+        $("#p_paso2").hide();
+        $("#p_paso4").hide();
+        $("#acordeon1").removeClass("active");
+        $("#acordeon2").removeClass("active");
+        $("#acordeon4").removeClass("active");
+    });
+    $("#acordeon4").click(function(){
+        $("#p_paso4").slideToggle();
+        $("#acordeon4").toggleClass("active");
+
+        $("#p_paso1").hide();
+        $("#p_paso2").hide();
+        $("#p_paso3").hide();
+        $("#acordeon1").removeClass("active");
+        $("#acordeon2").removeClass("active");
+        $("#acordeon3").removeClass("active");       
+    });
+});
+</script>
+
+     
+<!--Validar campos Solicitud -->
+<script>
+        var vacios=[];
+        function checkEmpty(field){
+
+          if(field.value=="" ){
+            vacios.push(field.name);
+          }
+        }
+
+        function checkNumbers(field){
+
+            
+            var valid=/^[a-zA-Z-\s]+$/;
+            if (valid.test(field.value))
+            {
+              return true;
+            }
+            else{
+              return false;
+            }
+        }
+
+
+      function validateFormSolicitud() {
+          
+          checkEmpty(document.forms["form_solicitud"]["nombre"]);
+          checkEmpty(document.forms["form_solicitud"]["correo"]);
+          checkEmpty(document.forms["form_solicitud"]["superficie"]);
+          checkEmpty(document.forms["form_solicitud"]["direccion"]);
+          checkEmpty(document.forms["form_solicitud"]["fecha"]);  
+          checkEmpty(document.forms["form_solicitud"]["inicio"]);  
+          checkEmpty(document.forms["form_solicitud"]["fin"]);  
+
+        var stringVacios="\n"+"\n";
+        var x;
+          for (x in vacios) {
+              stringVacios +=vacios[x]+"\n";    
+          } 
+
+        if(vacios.length>0){
+
+           alert("Los siguientes campos no han sido completados :"+stringVacios); 
+           stringVacios="\n"+"\n";
+           vacios=[];
+
+           return false;
+          
+        }
+        else if(
+        checkNumbers(document.forms["form_solicitud"]["nombre"])==false
+                            
+        ){
+          alert("El campo nombre y apellido no puede contener números");
+          return false;
+        }
+        else if(
+        checkNumbers(document.forms["form_solicitud"]["superficie"])==false
+                            
+        ){
+          alert("El campo Superficie de contacto no puede contener números");
+          return false;
+        }
+
+        else{
+
+        alert("Solicitud enviada. Pronto recibiras nuestra confirmación en tu correo");
+        return true;
+
+        }
+    
+      }
+
+
+      function validateFormContacto() {
+          
+              
+        if(document.forms["form_contacto"]["mensaje"].value==""){
+
+           alert("Debes escribir un mensaje"); 
+           return false;      
+        }
+        else if(document.forms["form_contacto"]["nombre"].value==""){
+
+           alert("Porfavor, escribe tu nombre para poder comunicarnos mejor"); 
+           return false;      
+        }
+
+        else{
+
+        alert("Mensaje enviado. Nos pondremos en contacto contigo pronto");
+        return true;
+
+        }
+    
+      }
+
+    </script>
+
+
+
+
+</body>
+</html> 
