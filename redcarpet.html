@@ -199,10 +199,11 @@ class="fa fa-whatsapp"></i>+569 877 69 29 7</p></a>
 
 <!--Control de sliders -->
 <script>
-var x = window.matchMedia("(max-width: 200px)")
+    // var x = window.matchMedia("(max-width: 400px)")
+    var x =window.innerWidth ;
 
-function openNavLeft() {
-if (x.matches) { 
+    function openNavLeft() {
+      if (x<300) {
        document.getElementById("sidenavLeft").style.width = "100%";
     } else {
       document.getElementById("sidenavLeft").style.width = "25%";
